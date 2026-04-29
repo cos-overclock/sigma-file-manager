@@ -128,6 +128,12 @@ export interface ExtensionKeybinding {
   when?: ExtensionKeybindingWhen;
 }
 
+export interface ExtensionIconThemeContribution {
+  id: string;
+  label: string;
+  path: string;
+}
+
 export interface ExtensionContributions {
   commands?: ExtensionCommand[];
   contextMenu?: ExtensionContextMenuItem[];
@@ -136,6 +142,7 @@ export interface ExtensionContributions {
   themes?: ExtensionThemeContribution[];
   configuration?: ExtensionConfiguration;
   keybindings?: ExtensionKeybinding[];
+  iconThemes?: ExtensionIconThemeContribution[];
 }
 
 export interface ExtensionEngines {
