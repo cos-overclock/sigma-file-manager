@@ -207,6 +207,7 @@ export interface ThemeOnlyExtensionContributions {
   toolbar?: never;
   configuration?: never;
   keybindings?: never;
+  iconThemes?: never;
 }
 
 export interface ApiExtensionManifest extends ExtensionManifestBase {
