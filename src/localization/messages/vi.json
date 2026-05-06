@@ -102,7 +102,9 @@
     "closeOtherTabs": "Đóng các tab khác",
     "closeDuplicateTabs": "Đóng bản trùng",
     "closeAllTabs": "Đóng tất cả tab",
-    "defaultTabOpened": "Đã mở tab mặc định"
+    "defaultTabOpened": "Đã mở tab mặc định",
+    "closedTabRestored": "Đã khôi phục tab đã đóng",
+    "noClosedTabsToRestore": "Không có tab đã đóng nào để khôi phục"
   },
   "splitView": "Chế độ chia màn hình",
   "workspaces": {
@@ -372,6 +374,7 @@
       "theme": {
         "title": "Chủ đề",
         "themeType": "Loại chủ đề",
+        "extensionThemes": "Chủ đề tiện ích mở rộng",
         "themeTypeRadio": {
           "dark": "Tối",
           "lightFilter": "Bộ lọc ánh sáng",
@@ -769,6 +772,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "Mở/đóng cửa sổ ứng dụng",
     "focusAppWindow": "Hiển thị cửa sổ ứng dụng",
+    "switchToHomePage": "Chuyển sang trang chủ",
+    "switchToNavigatorPage": "Chuyển sang trang trình điều hướng",
+    "switchToDashboardPage": "Chuyển sang bảng điều khiển",
+    "switchToSettingsPage": "Chuyển sang trang cài đặt",
+    "switchToExtensionsPage": "Chuyển sang trang tiện ích mở rộng",
+    "navigatePageBack": "Đi tới trang trước",
+    "navigatePageForward": "Đi tới trang tiếp theo",
     "openGlobalSearch": "Mở tìm kiếm toàn cầu",
     "openTheAppWindowCreateANewNote": "Mở cửa sổ ứng dụng và tạo ghi chú mới",
     "displayShortcutList": "Hiển thị danh sách phím tắt",
@@ -780,6 +790,7 @@
     "uiZoomReset": "Đặt lại thu phóng giao diện người dùng",
     "newTabInCurrentWorkspace": "Tab mới trong không gian làm việc hiện tại",
     "closeCurrentTab": "Đóng tab hiện tại / đóng cửa sổ ứng dụng",
+    "restoreLastClosedTab": "Khôi phục tab đã đóng gần nhất",
     "closeAllTabsInCurrentWorkspace": "Đóng tất cả các tab trong không gian làm việc hiện tại/đóng cửa sổ ứng dụng",
     "closeAppWindow": "Đóng cửa sổ ứng dụng",
     "scrollPageToTheTop": "Cuộn trang lên đầu",
@@ -798,6 +809,8 @@
     "navigateRight": "Điều hướng phải",
     "openSelectedEntry": "Mở thư mục hoặc tệp đã chọn",
     "navigateBack": "Quay lại trong lịch sử",
+    "navigateHistoryBack": "Quay lại trong lịch sử",
+    "navigateHistoryForward": "Tiến tới trong lịch sử",
     "switchToLeftPane": "Chuyển sang ngăn bên trái",
     "switchToRightPane": "Chuyển sang ngăn bên phải",
     "focusUnfocusFilterField": "Trường bộ lọc lấy nét/không lấy nét",

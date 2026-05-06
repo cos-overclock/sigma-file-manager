@@ -102,7 +102,9 @@
     "closeOtherTabs": "Diğer sekmeleri kapat",
     "closeDuplicateTabs": "Yinelenenleri kapat",
     "closeAllTabs": "Tüm sekmeleri kapat",
-    "defaultTabOpened": "Varsayılan sekme açıldı"
+    "defaultTabOpened": "Varsayılan sekme açıldı",
+    "closedTabRestored": "Kapatılan sekme geri yüklendi",
+    "noClosedTabsToRestore": "Geri yüklenecek kapatılmış sekme yok"
   },
   "splitView": "Bölünmüş görünüm",
   "workspaces": {
@@ -372,6 +374,7 @@
       "theme": {
         "title": "Tema",
         "themeType": "Tema türü",
+        "extensionThemes": "Uzantı temaları",
         "themeTypeRadio": {
           "dark": "Karanlık",
           "lightFilter": "Işık filtresi",
@@ -769,6 +772,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "Uygulama penceresini aç / kapat",
     "focusAppWindow": "Uygulama penceresini odakla",
+    "switchToHomePage": "Ana sayfaya geç",
+    "switchToNavigatorPage": "Gezgin sayfasına geç",
+    "switchToDashboardPage": "Panoya geç",
+    "switchToSettingsPage": "Ayarlar sayfasına geç",
+    "switchToExtensionsPage": "Uzantılar sayfasına geç",
+    "navigatePageBack": "Önceki sayfaya git",
+    "navigatePageForward": "Sonraki sayfaya git",
     "openGlobalSearch": "Global aramayı aç",
     "openTheAppWindowCreateANewNote": "Uygulama penceresini aç ve yeni bir not oluştur",
     "displayShortcutList": "Kısayol listesini görüntüle",
@@ -780,6 +790,7 @@
     "uiZoomReset": "UI yakınlaştırma sıfırlama",
     "newTabInCurrentWorkspace": "Mevcut çalışma alanında yeni sekme",
     "closeCurrentTab": "Geçerli sekmeyi kapat / uygulama penceresini kapat",
+    "restoreLastClosedTab": "Son kapatılan sekmeyi geri yükle",
     "closeAllTabsInCurrentWorkspace": "Geçerli çalışma alanındaki tüm sekmeleri kapat / uygulama penceresini kapat",
     "closeAppWindow": "Uygulama penceresini kapat",
     "scrollPageToTheTop": "Sayfayı yukarı kaydır",
@@ -798,6 +809,8 @@
     "navigateRight": "Sağa git",
     "openSelectedEntry": "Seçilen dizini veya dosyayı aç",
     "navigateBack": "Geçmişte geri git",
+    "navigateHistoryBack": "Geçmişte geri git",
+    "navigateHistoryForward": "Geçmişte ileri git",
     "switchToLeftPane": "Sol panele geç",
     "switchToRightPane": "Sağ panele geç",
     "focusUnfocusFilterField": "Odak / odak dışı filtre alanı",

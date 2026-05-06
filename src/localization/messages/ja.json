@@ -102,7 +102,9 @@
     "closeOtherTabs": "他のタブを閉じる",
     "closeDuplicateTabs": "重複を閉じる",
     "closeAllTabs": "すべてのタブを閉じる",
-    "defaultTabOpened": "デフォルトタブが開きました"
+    "defaultTabOpened": "デフォルトタブが開きました",
+    "closedTabRestored": "閉じたタブを復元しました",
+    "noClosedTabsToRestore": "復元できる閉じたタブはありません"
   },
   "splitView": "分割表示",
   "workspaces": {
@@ -372,6 +374,7 @@
       "theme": {
         "title": "テーマ",
         "themeType": "テーマタイプ",
+        "extensionThemes": "拡張機能のテーマ",
         "themeTypeRadio": {
           "dark": "暗い",
           "lightFilter": "光フィルター",
@@ -769,6 +772,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "アプリ ウィンドウを開く/閉じる",
     "focusAppWindow": "アプリ ウィンドウをフォーカスする",
+    "switchToHomePage": "ホームページに切り替え",
+    "switchToNavigatorPage": "ナビゲーターページに切り替え",
+    "switchToDashboardPage": "ダッシュボードに切り替え",
+    "switchToSettingsPage": "設定ページに切り替え",
+    "switchToExtensionsPage": "拡張機能ページに切り替え",
+    "navigatePageBack": "前のページへ移動",
+    "navigatePageForward": "次のページへ移動",
     "openGlobalSearch": "グローバル検索を開く",
     "openTheAppWindowCreateANewNote": "アプリ ウィンドウを開いて新しいメモを作成",
     "displayShortcutList": "ショートカット一覧を表示",
@@ -780,6 +790,7 @@
     "uiZoomReset": "UIズームリセット",
     "newTabInCurrentWorkspace": "現在のワークスペースの新しいタブ",
     "closeCurrentTab": "現在のタブを閉じる / アプリ ウィンドウを閉じる",
+    "restoreLastClosedTab": "最後に閉じたタブを復元",
     "closeAllTabsInCurrentWorkspace": "現在のワークスペースのすべてのタブを閉じる / アプリ ウィンドウを閉じる",
     "closeAppWindow": "アプリウィンドウを閉じる",
     "scrollPageToTheTop": "ページを一番上までスクロール",
@@ -798,6 +809,8 @@
     "navigateRight": "右に移動",
     "openSelectedEntry": "選択したディレクトリまたはファイルを開く",
     "navigateBack": "履歴で戻る",
+    "navigateHistoryBack": "履歴を戻る",
+    "navigateHistoryForward": "履歴を進む",
     "switchToLeftPane": "左ペインに切り替え",
     "switchToRightPane": "右ペインに切り替え",
     "focusUnfocusFilterField": "フォーカス/フォーカス解除フィルタ フィールド",

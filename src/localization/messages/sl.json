@@ -102,7 +102,9 @@
     "closeOtherTabs": "Zapri druge zavihke",
     "closeDuplicateTabs": "Zapri podvojene",
     "closeAllTabs": "Zapri vse zavihke",
-    "defaultTabOpened": "Privzeti zavihek je bil odprt"
+    "defaultTabOpened": "Privzeti zavihek je bil odprt",
+    "closedTabRestored": "Zaprt zavihek je bil obnovljen",
+    "noClosedTabsToRestore": "Ni zaprtih zavihkov za obnovitev"
   },
   "splitView": "Razdeljen pogled",
   "workspaces": {
@@ -391,6 +393,7 @@
       "theme": {
         "title": "Tema",
         "themeType": "Tip teme",
+        "extensionThemes": "Teme razširitev",
         "themeTypeRadio": {
           "dark": "Temna",
           "lightFilter": "Svetla filtrirana",
@@ -788,6 +791,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "Odpri / zapri okno aplikacije",
     "focusAppWindow": "Prikaži okno aplikacije",
+    "switchToHomePage": "Preklopi na domačo stran",
+    "switchToNavigatorPage": "Preklopi na stran Navigator",
+    "switchToDashboardPage": "Preklopi na nadzorno ploščo",
+    "switchToSettingsPage": "Preklopi na stran z nastavitvami",
+    "switchToExtensionsPage": "Preklopi na stran z razširitvami",
+    "navigatePageBack": "Pojdi na prejšnjo stran",
+    "navigatePageForward": "Pojdi na naslednjo stran",
     "openGlobalSearch": "Odpri globalno iskanje",
     "openTheAppWindowCreateANewNote": "Odpri okno aplikacije & ustvari novo opombo",
     "displayShortcutList": "Prikaži seznam bližnjic",
@@ -799,6 +809,7 @@
     "uiZoomReset": "Ponastavi UI povečavo",
     "newTabInCurrentWorkspace": "Nov zavihek v trenutnem delovnem prostoru",
     "closeCurrentTab": "Zapri trenutni zavihek / zapri okno aplikacije",
+    "restoreLastClosedTab": "Obnovi zadnji zaprti zavihek",
     "closeAllTabsInCurrentWorkspace": "Zapri vse zavihke v trenutnem delovnem prostoru / zapri okno aplikacije",
     "closeAppWindow": "Zapri okno aplikacije",
     "scrollPageToTheTop": "Pomakni stran na vrh",
@@ -817,6 +828,8 @@
     "navigateRight": "Navigacija desno",
     "openSelectedEntry": "Odpri izbrano mapo ali datoteko",
     "navigateBack": "Nazaj v zgodovini",
+    "navigateHistoryBack": "Nazaj v zgodovini",
+    "navigateHistoryForward": "Naprej v zgodovini",
     "switchToLeftPane": "Preklopi na levo podokno",
     "switchToRightPane": "Preklopi na desno podokno",
     "focusUnfocusFilterField": "Fokusiraj / odstraniti fokus iz polja filtra",

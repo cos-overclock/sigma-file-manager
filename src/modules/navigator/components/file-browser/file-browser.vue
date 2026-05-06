@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<{
   entryDescription?: (entry: DirEntry) => string | undefined;
   trackRelativeTime?: boolean;
   isActivePane?: boolean;
+  isSplitView?: boolean;
 }>(), {
   tab: undefined,
   paneIndex: undefined,
@@ -40,6 +41,7 @@ const props = withDefaults(defineProps<{
   entryDescription: undefined,
   trackRelativeTime: true,
   isActivePane: undefined,
+  isSplitView: false,
 });
 
 const emit = defineEmits<{
@@ -61,6 +63,7 @@ const fb = useFileBrowser({
   componentRef: fileBrowserRef,
   isDefaultPane: props.paneIndex === 0 || props.paneIndex === undefined,
   isActivePane: () => props.isActivePane ?? (props.paneIndex === 0 || props.paneIndex === undefined),
+  entryDescription: props.entryDescription,
 });
 
 const permanentDeleteIsOpen = fb.permanentDeleteConfirm.isOpen;
@@ -76,8 +79,22 @@ provideFileBrowserContext({
   isEntrySelected: fb.isEntrySelected,
   contextMenu: fb.contextMenu,
   getImageThumbnail: fb.getImageThumbnail,
+  getImageThumbnailPlaceholder: fb.getImageThumbnailPlaceholder,
+  shouldShowImageThumbnailFallback: fb.shouldShowImageThumbnailFallback,
+  cancelImageThumbnail: fb.cancelImageThumbnail,
   getVideoThumbnail: fb.getVideoThumbnail,
+  cancelVideoThumbnail: fb.cancelVideoThumbnail,
   setEntriesContainerRef: fb.setEntriesContainerRef,
+  setScrollViewportRef: fb.setScrollViewportRef,
+  handleVirtualScroll: fb.handleVirtualScroll,
+  virtualRows: fb.virtualRows,
+  visibleVirtualRows: fb.visibleVirtualRows,
+  activeGridSectionRow: fb.activeGridSectionRow,
+  virtualTotalSize: fb.virtualTotalSize,
+  virtualOffsetY: fb.virtualOffsetY,
+  virtualSpacerStyle: fb.virtualSpacerStyle,
+  virtualWindowStyle: fb.virtualWindowStyle,
+  virtualGridColumnCount: fb.virtualGridColumnCount,
   onEntryMouseDown: fb.onEntryMouseDown,
   onEntryMouseUp: fb.onEntryMouseUp,
   handleEntryFocus: fb.handleEntryFocus,
@@ -114,6 +131,9 @@ defineExpose({
   navigateRight: fb.navigateRight,
   openSelected: fb.openSelected,
   navigateBack: fb.navigateBack,
+  goBack: fb.goBack,
+  goForward: fb.goForward,
+  navigateToParent: fb.navigateToParent,
   copyItems: fb.copyItems,
   cutItems: fb.cutItems,
   pasteItems: fb.pasteItems,
@@ -139,6 +159,7 @@ defineExpose({
       :can-go-forward="fb.canGoForward.value"
       :can-go-up="!!fb.parentPath.value"
       :is-loading="fb.isLoading.value || fb.isRefreshing.value"
+      :is-split-view="props.isSplitView"
       @go-back="fb.goBack"
       @go-forward="fb.goForward"
       @go-up="fb.navigateToParent"

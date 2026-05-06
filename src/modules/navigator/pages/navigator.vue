@@ -31,8 +31,8 @@ import { InfoPanel } from '@/modules/navigator/components/info-panel';
 import { NavigatorToolbarActions } from '@/modules/navigator/components/navigator-toolbar-actions';
 import { ClipboardToolbar } from '@/modules/navigator/components/clipboard-toolbar';
 import { GlobalSearchView } from '@/modules/global-search';
-import { UI_CONSTANTS } from '@/constants';
 import type { DirEntry } from '@/types/dir-entry';
+import { useIsSmallScreen } from '@/composables/use-responsive-query';
 
 type FileBrowserInstance = InstanceType<typeof FileBrowser> & {
   rootElement?: HTMLElement | null;
@@ -52,6 +52,9 @@ type FileBrowserInstance = InstanceType<typeof FileBrowser> & {
   navigateRight?: () => void;
   openSelected?: () => void;
   navigateBack?: () => void;
+  goBack?: () => void | Promise<void>;
+  goForward?: () => void | Promise<void>;
+  navigateToParent?: () => void | Promise<void>;
 };
 
 type GlobalSearchViewInstance = InstanceType<typeof GlobalSearchView> & {
@@ -93,8 +96,7 @@ watch(selectedEntries, (entries) => {
 
 const currentDirEntry = ref<DirEntry | null>(null);
 const activeTabId = ref<string | null>(null);
-const smallScreenMediaQuery = window.matchMedia(`(max-width: ${UI_CONSTANTS.SMALL_SCREEN_BREAKPOINT}px)`);
-const isSmallScreen = ref(smallScreenMediaQuery.matches);
+const isSmallScreen = useIsSmallScreen();
 
 watch(() => workspacesStore.currentTabGroup, (newGroup, oldGroup) => {
   const currentTabIds = new Set(
@@ -119,10 +121,6 @@ watch(() => workspacesStore.currentTabGroup, (newGroup, oldGroup) => {
     }
   }
 });
-
-function handleSmallScreenChange(event: MediaQueryListEvent) {
-  isSmallScreen.value = event.matches;
-}
 
 const currentLayout = computed(() => {
   const layoutName = userSettingsStore.userSettings.navigator.layout.type.name;
@@ -568,6 +566,10 @@ async function handleCloseCurrentTabShortcut() {
   }
 }
 
+async function handleRestoreLastClosedTabShortcut() {
+  return workspacesStore.restoreLastClosedTabGroup();
+}
+
 async function handleOpenTerminalShortcut() {
   await openTerminalWithOptions(false);
 }
@@ -625,7 +627,7 @@ function hasBlockingRekaDismissableLayersForNavigatorShortcuts(): boolean {
 
 function callActivePaneMethod(method: keyof Pick<
   FileBrowserInstance,
-  'navigateUp' | 'navigateDown' | 'navigateLeft' | 'navigateRight' | 'openSelected' | 'navigateBack'
+  'navigateUp' | 'navigateDown' | 'navigateLeft' | 'navigateRight' | 'openSelected' | 'navigateBack' | 'goBack' | 'goForward' | 'navigateToParent'
 >): boolean {
   if (hasBlockingDismissalLayersForNavigatorShortcuts()) return false;
 
@@ -656,6 +658,18 @@ function handleNavigateBackShortcut(): boolean {
   return callActivePaneMethod('navigateBack');
 }
 
+function handleNavigateHistoryBackShortcut(): boolean {
+  return callActivePaneMethod('goBack');
+}
+
+function handleNavigateHistoryForwardShortcut(): boolean {
+  return callActivePaneMethod('goForward');
+}
+
+function handleGoUpDirectoryShortcut(): boolean {
+  return callActivePaneMethod('navigateToParent');
+}
+
 function registerShortcutHandlers() {
   shortcutsStore.registerHandler('toggleFilter', handleFilterShortcut);
   shortcutsStore.registerHandler('reloadCurrentDirectory', handleReloadShortcut);
@@ -677,6 +691,7 @@ function registerShortcutHandlers() {
   shortcutsStore.registerHandler('quickView', handleQuickViewShortcut, { checkItemSelected: hasSelectedItems });
   shortcutsStore.registerHandler('openNewTab', handleOpenNewTabShortcut);
   shortcutsStore.registerHandler('closeCurrentTab', handleCloseCurrentTabShortcut);
+  shortcutsStore.registerHandler('restoreLastClosedTab', handleRestoreLastClosedTabShortcut);
   shortcutsStore.registerHandler('openTerminal', handleOpenTerminalShortcut);
   shortcutsStore.registerHandler('openTerminalAdmin', handleOpenTerminalAdminShortcut);
   shortcutsStore.registerHandler('navigateUp', () => callActivePaneMethod('navigateUp'));
@@ -685,6 +700,9 @@ function registerShortcutHandlers() {
   shortcutsStore.registerHandler('navigateRight', () => callActivePaneMethod('navigateRight'));
   shortcutsStore.registerHandler('openSelected', () => callActivePaneMethod('openSelected'), { checkItemSelected: hasSelectedItems });
   shortcutsStore.registerHandler('navigateBack', handleNavigateBackShortcut);
+  shortcutsStore.registerHandler('navigateHistoryBack', handleNavigateHistoryBackShortcut);
+  shortcutsStore.registerHandler('navigateHistoryForward', handleNavigateHistoryForwardShortcut);
+  shortcutsStore.registerHandler('goUpDirectory', handleGoUpDirectoryShortcut);
   shortcutsStore.registerHandler('switchToLeftPane', () => switchToPane(0));
   shortcutsStore.registerHandler('switchToRightPane', () => switchToPane(1));
   shortcutsStore.registerHandler('toggleSplitView', () => {
@@ -695,14 +713,12 @@ function registerShortcutHandlers() {
 
 onMounted(() => {
   registerShortcutHandlers();
-  smallScreenMediaQuery.addEventListener('change', handleSmallScreenChange);
 
   // Recover any in-progress directory size calculations from backend
   dirSizesStore.recoverActiveCalculations();
 });
 
 onUnmounted(() => {
-  smallScreenMediaQuery.removeEventListener('change', handleSmallScreenChange);
   navigatorSelectionStore.setSelectedDirEntries([]);
 });
 </script>
@@ -763,6 +779,7 @@ onUnmounted(() => {
                     :layout="currentLayout"
                     :track-relative-time="trackNavigatorRelativeTime"
                     :is-active-pane="activeTabId ? activeTabId === tab.id : index === 0"
+                    :is-split-view="true"
                     class="navigator-page__pane"
                     @update:selected-entries="(entries) => handleSelectionChange(entries, tab.id)"
                     @update:current-dir-entry="handleCurrentDirChange"

@@ -102,7 +102,9 @@
     "closeOtherTabs": "अन्य टैब बंद करें",
     "closeDuplicateTabs": "डुप्लिकेट बंद करें",
     "closeAllTabs": "सभी टैब को बंद करें",
-    "defaultTabOpened": "डिफ़ॉल्ट टैब खोला गया था"
+    "defaultTabOpened": "डिफ़ॉल्ट टैब खोला गया था",
+    "closedTabRestored": "बंद टैब पुनर्स्थापित किया गया",
+    "noClosedTabsToRestore": "पुनर्स्थापित करने के लिए कोई बंद टैब नहीं"
   },
   "splitView": "भाजित दृश्य",
   "workspaces": {
@@ -391,6 +393,7 @@
       "theme": {
         "title": "विषय",
         "themeType": "थीम प्रकार",
+        "extensionThemes": "एक्सटेंशन थीम",
         "themeTypeRadio": {
           "dark": "अँधेरा",
           "lightFilter": "हल्का फ़िल्टर",
@@ -788,6 +791,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "ऐप विंडो खोलें/बंद करें",
     "focusAppWindow": "ऐप विंडो पर फोकस करें",
+    "switchToHomePage": "होम पेज पर स्विच करें",
+    "switchToNavigatorPage": "नेविगेटर पेज पर स्विच करें",
+    "switchToDashboardPage": "डैशबोर्ड पर स्विच करें",
+    "switchToSettingsPage": "सेटिंग्स पेज पर स्विच करें",
+    "switchToExtensionsPage": "एक्सटेंशन पेज पर स्विच करें",
+    "navigatePageBack": "पिछले पेज पर जाएँ",
+    "navigatePageForward": "अगले पेज पर जाएँ",
     "openGlobalSearch": "वैश्विक खोज खोलें",
     "openTheAppWindowCreateANewNote": "ऐप विंडो खोलें और एक नया नोट बनाएं",
     "displayShortcutList": "शॉर्टकट सूची प्रदर्शित करें",
@@ -799,6 +809,7 @@
     "uiZoomReset": "यूआई ज़ूम रीसेट",
     "newTabInCurrentWorkspace": "वर्तमान कार्यक्षेत्र में नया टैब",
     "closeCurrentTab": "वर्तमान टैब बंद करें / ऐप विंडो बंद करें",
+    "restoreLastClosedTab": "अंतिम बंद टैब पुनर्स्थापित करें",
     "closeAllTabsInCurrentWorkspace": "वर्तमान कार्यक्षेत्र में सभी टैब बंद करें/ऐप विंडो बंद करें",
     "closeAppWindow": "ऐप विंडो बंद करें",
     "scrollPageToTheTop": "पृष्ठ को शीर्ष तक स्क्रॉल करें",
@@ -817,6 +828,8 @@
     "navigateRight": "दाईं ओर नेविगेट करें",
     "openSelectedEntry": "चयनित निर्देशिका या फ़ाइल खोलें",
     "navigateBack": "इतिहास में वापस जाएँ",
+    "navigateHistoryBack": "इतिहास में पीछे जाएँ",
+    "navigateHistoryForward": "इतिहास में आगे जाएँ",
     "switchToLeftPane": "बाएँ फलक पर स्विच करें",
     "switchToRightPane": "दाएँ फलक पर स्विच करें",
     "focusUnfocusFilterField": "फ़ोकस / अनफ़ोकस फ़िल्टर फ़ील्ड",

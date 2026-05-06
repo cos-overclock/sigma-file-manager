@@ -102,7 +102,9 @@
     "closeOtherTabs": "بستن سایر برگه ها",
     "closeDuplicateTabs": "بستن تکراری‌ها",
     "closeAllTabs": "بستن همه برگه ها",
-    "defaultTabOpened": "برگه پیش‌فرض باز شد"
+    "defaultTabOpened": "برگه پیش‌فرض باز شد",
+    "closedTabRestored": "برگه بسته‌شده بازیابی شد",
+    "noClosedTabsToRestore": "برگه بسته‌شده‌ای برای بازیابی وجود ندارد"
   },
   "workspaces": {
     "title": "فضای کار",
@@ -371,6 +373,7 @@
       "theme": {
         "title": "موضوع",
         "themeType": "نوع تم",
+        "extensionThemes": "تم‌های افزونه",
         "themeTypeRadio": {
           "dark": "تاریک",
           "lightFilter": "فیلتر نور",
@@ -768,6 +771,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "باز کردن / بستن پنجره برنامه",
     "focusAppWindow": "نمایش پنجره برنامه",
+    "switchToHomePage": "رفتن به صفحه نخست",
+    "switchToNavigatorPage": "رفتن به صفحه ناوبر",
+    "switchToDashboardPage": "رفتن به داشبورد",
+    "switchToSettingsPage": "رفتن به صفحه تنظیمات",
+    "switchToExtensionsPage": "رفتن به صفحه برنامه‌های افزودنی",
+    "navigatePageBack": "رفتن به صفحه قبلی",
+    "navigatePageForward": "رفتن به صفحه بعدی",
     "openGlobalSearch": "باز کردن جستجوی جهانی",
     "openTheAppWindowCreateANewNote": "پنجره برنامه را باز کنید و یک یادداشت جدید ایجاد کنید",
     "displayShortcutList": "نمایش لیست میانبر",
@@ -779,6 +789,7 @@
     "uiZoomReset": "بازنشانی بزرگنمایی UI",
     "newTabInCurrentWorkspace": "برگه جدید در فضای کاری فعلی",
     "closeCurrentTab": "بستن برگه فعلی / بستن پنجره برنامه",
+    "restoreLastClosedTab": "بازگرداندن آخرین برگه بسته شده",
     "closeAllTabsInCurrentWorkspace": "بستن همه برگه ها در فضای کاری فعلی / بستن پنجره برنامه",
     "closeAppWindow": "بستن پنجره برنامه",
     "scrollPageToTheTop": "صفحه را به بالا بروید",
@@ -797,6 +808,8 @@
     "navigateRight": "ناوبری به راست",
     "openSelectedEntry": "باز کردن پوشه یا فایل انتخاب شده",
     "navigateBack": "بازگشت در تاریخچه",
+    "navigateHistoryBack": "رفتن به عقب در تاریخچه",
+    "navigateHistoryForward": "رفتن به جلو در تاریخچه",
     "switchToLeftPane": "تعویض به پنل چپ",
     "switchToRightPane": "تعویض به پنل راست",
     "focusUnfocusFilterField": "فیلد فیلتر فوکوس / عدم تمرکز",

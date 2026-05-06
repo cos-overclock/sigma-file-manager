@@ -102,7 +102,9 @@
     "closeOtherTabs": "دوسرے ٹیب بند کریں",
     "closeDuplicateTabs": "ڈپلیکیٹ بند کریں",
     "closeAllTabs": "تمام ٹیب بند کریں",
-    "defaultTabOpened": "ڈیفالٹ ٹیب کھولا گیا"
+    "defaultTabOpened": "ڈیفالٹ ٹیب کھولا گیا",
+    "closedTabRestored": "بند ٹیب بحال کر دیا گیا",
+    "noClosedTabsToRestore": "بحال کرنے کے لیے کوئی بند ٹیب نہیں"
   },
   "splitView": "تقسیم شدہ منظر",
   "workspaces": {
@@ -391,6 +393,7 @@
       "theme": {
         "title": "تھیم",
         "themeType": "تھیم کی قسم",
+        "extensionThemes": "ایکسٹینشن تھیمز",
         "themeTypeRadio": {
           "dark": "ڈارک",
           "lightFilter": "لائٹ فلٹر",
@@ -788,6 +791,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "ایپ ونڈو کھولیں / بند کریں",
     "focusAppWindow": "ایپ ونڈو پر فوکس کریں",
+    "switchToHomePage": "ہوم صفحے پر جائیں",
+    "switchToNavigatorPage": "نیویگیٹر صفحے پر جائیں",
+    "switchToDashboardPage": "ڈیش بورڈ پر جائیں",
+    "switchToSettingsPage": "ترتیبات صفحے پر جائیں",
+    "switchToExtensionsPage": "ایکسٹینشنز صفحے پر جائیں",
+    "navigatePageBack": "پچھلے صفحے پر جائیں",
+    "navigatePageForward": "اگلے صفحے پر جائیں",
     "openGlobalSearch": "عالمی تلاش کھولیں",
     "openTheAppWindowCreateANewNote": "ایپ کھولیں اور نیا نوٹ بنائیں",
     "displayShortcutList": "شارٹ کٹ فہرست دکھائیں",
@@ -799,6 +809,7 @@
     "uiZoomReset": "UI زوم ری سیٹ کریں",
     "newTabInCurrentWorkspace": "موجودہ ورک اسپیس میں نیا ٹیب",
     "closeCurrentTab": "موجودہ ٹیب بند کریں / ایپ ونڈو بند کریں",
+    "restoreLastClosedTab": "آخری بند ٹیب بحال کریں",
     "closeAllTabsInCurrentWorkspace": "موجودہ ورک اسپیس کے تمام ٹیب بند کریں / ایپ ونڈو بند کریں",
     "closeAppWindow": "ایپ ونڈو بند کریں",
     "scrollPageToTheTop": "صفحہ کے اوپر سکرول کریں",
@@ -817,6 +828,8 @@
     "navigateRight": "دائیں نیویگیٹ کریں",
     "openSelectedEntry": "منتخب فولڈر یا فائل کھولیں",
     "navigateBack": "سابقات میں پیچھے جائیں",
+    "navigateHistoryBack": "سابقات میں پیچھے جائیں",
+    "navigateHistoryForward": "سابقات میں آگے جائیں",
     "switchToLeftPane": "بائیں پین پر جائیں",
     "switchToRightPane": "دائیں پین پر جائیں",
     "focusUnfocusFilterField": "فلٹر فیلڈ فوکس / ان فوکس کریں",

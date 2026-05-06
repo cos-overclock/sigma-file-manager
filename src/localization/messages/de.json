@@ -102,7 +102,9 @@
     "closeOtherTabs": "Andere Tabs schließen",
     "closeDuplicateTabs": "Duplikate schließen",
     "closeAllTabs": "Alle Tabs schließen",
-    "defaultTabOpened": "Standard-Tab wurde geöffnet"
+    "defaultTabOpened": "Standard-Tab wurde geöffnet",
+    "closedTabRestored": "Geschlossener Tab wiederhergestellt",
+    "noClosedTabsToRestore": "Keine geschlossenen Tabs zum Wiederherstellen"
   },
   "splitView": "Geteilte Ansicht",
   "workspaces": {
@@ -372,6 +374,7 @@
       "theme": {
         "title": "Thema",
         "themeType": "Thementyp",
+        "extensionThemes": "Erweiterungsthemen",
         "themeTypeRadio": {
           "dark": "Dunkel",
           "lightFilter": "Hell",
@@ -769,6 +772,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "App-Fenster öffnen / schließen",
     "focusAppWindow": "App-Fenster fokussieren",
+    "switchToHomePage": "Zur Startseite wechseln",
+    "switchToNavigatorPage": "Zur Navigatorseite wechseln",
+    "switchToDashboardPage": "Zum Dashboard wechseln",
+    "switchToSettingsPage": "Zur Einstellungsseite wechseln",
+    "switchToExtensionsPage": "Zur Erweiterungsseite wechseln",
+    "navigatePageBack": "Zur vorherigen Seite navigieren",
+    "navigatePageForward": "Zur nächsten Seite navigieren",
     "openGlobalSearch": "Globale Suche öffnen",
     "openTheAppWindowCreateANewNote": "Öffne das App-Fenster und erstelle eine neue Notiz",
     "displayShortcutList": "Kurzwahlliste anzeigen",
@@ -780,6 +790,7 @@
     "uiZoomReset": "UI-Zoom zurücksetzen",
     "newTabInCurrentWorkspace": "Neuer Tab im aktuellen Arbeitsbereich",
     "closeCurrentTab": "Aktuellen Tab schließen / App-Fenster schließen",
+    "restoreLastClosedTab": "Zuletzt geschlossenen Tab wiederherstellen",
     "closeAllTabsInCurrentWorkspace": "Alle Tabs im aktuellen Arbeitsbereich schließen / App-Fenster schließen",
     "closeAppWindow": "App-Fenster schließen",
     "scrollPageToTheTop": "Seite nach oben scrollen",
@@ -798,6 +809,8 @@
     "navigateRight": "Nach rechts navigieren",
     "openSelectedEntry": "Ausgewählten Ordner oder die ausgewählte Datei öffnen",
     "navigateBack": "Im Verlauf zurück navigieren",
+    "navigateHistoryBack": "Im Verlauf zurück",
+    "navigateHistoryForward": "Im Verlauf vorwärts",
     "switchToLeftPane": "Zum linken Bereich wechseln",
     "switchToRightPane": "Zum rechten Bereich wechseln",
     "focusUnfocusFilterField": "Fokus-/Unfokus-Filterfeld",

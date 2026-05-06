@@ -102,7 +102,9 @@
     "closeOtherTabs": "Cerrar otras pestañas",
     "closeDuplicateTabs": "Cerrar duplicados",
     "closeAllTabs": "Cerrar todas las pestañas",
-    "defaultTabOpened": "Se abrió la pestaña predeterminada"
+    "defaultTabOpened": "Se abrió la pestaña predeterminada",
+    "closedTabRestored": "Pestaña cerrada restaurada",
+    "noClosedTabsToRestore": "No hay pestañas cerradas para restaurar"
   },
   "splitView": "Vista dividida",
   "workspaces": {
@@ -372,6 +374,7 @@
       "theme": {
         "title": "Temática",
         "themeType": "Tipo de tema",
+        "extensionThemes": "Temas de extensiones",
         "themeTypeRadio": {
           "dark": "Oscuro",
           "lightFilter": "Filtro de luz",
@@ -769,6 +772,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "Abrir/cerrar la ventana de la aplicación",
     "focusAppWindow": "Enfocar la ventana de la aplicación",
+    "switchToHomePage": "Cambiar a la página de inicio",
+    "switchToNavigatorPage": "Cambiar a la página del navegador",
+    "switchToDashboardPage": "Cambiar al panel de control",
+    "switchToSettingsPage": "Cambiar a la página de configuración",
+    "switchToExtensionsPage": "Cambiar a la página de extensiones",
+    "navigatePageBack": "Navegar a la página anterior",
+    "navigatePageForward": "Navegar a la página siguiente",
     "openGlobalSearch": "Abrir búsqueda global",
     "openTheAppWindowCreateANewNote": "Abre la ventana de la aplicación y crea una nueva nota",
     "displayShortcutList": "Mostrar lista de accesos directos",
@@ -780,6 +790,7 @@
     "uiZoomReset": "Restablecimiento del zoom de la interfaz de usuario",
     "newTabInCurrentWorkspace": "Nueva pestaña en el espacio de trabajo actual",
     "closeCurrentTab": "Cerrar pestaña actual/cerrar ventana de aplicación",
+    "restoreLastClosedTab": "Restaurar la última pestaña cerrada",
     "closeAllTabsInCurrentWorkspace": "Cerrar todas las pestañas en el espacio de trabajo actual/cerrar la ventana de la aplicación",
     "closeAppWindow": "Cerrar ventana de la aplicación",
     "scrollPageToTheTop": "Desplazar la página hacia arriba",
@@ -798,6 +809,8 @@
     "navigateRight": "Navegar hacia la derecha",
     "openSelectedEntry": "Abrir directorio o archivo seleccionado",
     "navigateBack": "Navegar atrás en el historial",
+    "navigateHistoryBack": "Ir atrás en el historial",
+    "navigateHistoryForward": "Ir adelante en el historial",
     "switchToLeftPane": "Cambiar al panel izquierdo",
     "switchToRightPane": "Cambiar al panel derecho",
     "focusUnfocusFilterField": "Campo de filtro de enfoque/desenfoque",

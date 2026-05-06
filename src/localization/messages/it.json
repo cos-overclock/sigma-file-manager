@@ -102,7 +102,9 @@
     "closeOtherTabs": "Chiudi altre schede",
     "closeDuplicateTabs": "Chiudi duplicati",
     "closeAllTabs": "Chiudi tutte le schede",
-    "defaultTabOpened": "La scheda predefinita è stata aperta"
+    "defaultTabOpened": "La scheda predefinita è stata aperta",
+    "closedTabRestored": "Scheda chiusa ripristinata",
+    "noClosedTabsToRestore": "Nessuna scheda chiusa da ripristinare"
   },
   "splitView": "Vista divisa",
   "workspaces": {
@@ -372,6 +374,7 @@
       "theme": {
         "title": "Tema",
         "themeType": "Tipo di tema",
+        "extensionThemes": "Temi delle estensioni",
         "themeTypeRadio": {
           "dark": "Scuro",
           "lightFilter": "Filtro chiaro",
@@ -769,6 +772,13 @@
   "shortcuts": {
     "openCloseTheAppWindow": "Apri / chiudi la finestra dell'app",
     "focusAppWindow": "Mostra la finestra dell'app",
+    "switchToHomePage": "Passa alla pagina iniziale",
+    "switchToNavigatorPage": "Passa alla pagina del navigatore",
+    "switchToDashboardPage": "Passa alla dashboard",
+    "switchToSettingsPage": "Passa alla pagina delle impostazioni",
+    "switchToExtensionsPage": "Passa alla pagina delle estensioni",
+    "navigatePageBack": "Vai alla pagina precedente",
+    "navigatePageForward": "Vai alla pagina successiva",
     "openGlobalSearch": "Apri la ricerca globale",
     "openTheAppWindowCreateANewNote": "Apri la finestra dell'app e crea una nuova nota",
     "displayShortcutList": "Mostra la lista delle scorciatoie",
@@ -780,6 +790,7 @@
     "uiZoomReset": "Reimpostazione zoom della UI",
     "newTabInCurrentWorkspace": "Nuova scheda nell'area di lavoro attuale",
     "closeCurrentTab": "Chiudi la scheda attuale / chiudi la finestra dell'app",
+    "restoreLastClosedTab": "Ripristina l'ultima scheda chiusa",
     "closeAllTabsInCurrentWorkspace": "Chiudi tutte le schede nell'area di lavoro attuale / chiudi la finestra dell'app",
     "closeAppWindow": "Chiudi la finestra dell'app",
     "scrollPageToTheTop": "Scorri la pagina verso l'alto",
@@ -798,6 +809,8 @@
     "navigateRight": "Navigare a destra",
     "openSelectedEntry": "Aprire la cartella o il file selezionato",
     "navigateBack": "Tornare indietro nella cronologia",
+    "navigateHistoryBack": "Indietro nella cronologia",
+    "navigateHistoryForward": "Avanti nella cronologia",
     "switchToLeftPane": "Passare al pannello sinistro",
     "switchToRightPane": "Passare al pannello destro",
     "focusUnfocusFilterField": "Campo filtro focalizzato / non focalizzato",
