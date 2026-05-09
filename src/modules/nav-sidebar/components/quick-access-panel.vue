@@ -329,12 +329,11 @@ function openTaggedItem(item: TaggedItem) {
 
 <style scoped>
 .quick-access-panel {
-  --header-height: 45px;
+  --header-height: 32px;
   --max-height: calc(100vh - 12px);
 
   width: var(--quick-access-panel-width);
   max-height: var(--max-height);
-  border: 1px solid hsl(var(--border));
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-md);
 }
@@ -342,7 +341,7 @@ function openTaggedItem(item: TaggedItem) {
 .quick-access-panel__header {
   height: var(--header-height);
   padding: 12px 16px;
-  border-bottom: 1px solid hsl(var(--border));
+  padding-bottom: 0;
 }
 
 .quick-access-panel__title {
@@ -471,8 +470,9 @@ function openTaggedItem(item: TaggedItem) {
 }
 
 :deep(.dir-entry-interactive[data-drag-over]) > .quick-access-panel__item {
-  background-color: hsl(var(--primary) / 15%);
-  box-shadow: inset 0 0 0 2px hsl(var(--primary) / 60%);
+  background-color: var(--drop-target-background);
+  outline: var(--drop-target-outline);
+  outline-offset: var(--drop-target-outline-offset);
 }
 
 .quick-access-panel__item-icon {

@@ -27,12 +27,17 @@ import { useTerminalsStore } from '@/stores/runtime/terminals';
 import { useDirSizesStore } from '@/stores/runtime/dir-sizes';
 import { useNavigatorSelectionStore } from '@/stores/runtime/navigator-selection';
 import { FileBrowser } from '@/modules/navigator/components/file-browser';
+import FileBrowserConflictDialog from '@/modules/navigator/components/file-browser/file-browser-conflict-dialog.vue';
+import FileBrowserDragOverlay from '@/modules/navigator/components/file-browser/file-browser-drag-overlay.vue';
+import { useActiveFileBrowserDragState } from '@/modules/navigator/components/file-browser/composables/use-file-browser-drag';
+import { provideFileBrowserInternalDropHandler } from '@/modules/navigator/components/file-browser/composables/use-file-browser-internal-drop';
 import { InfoPanel } from '@/modules/navigator/components/info-panel';
 import { NavigatorToolbarActions } from '@/modules/navigator/components/navigator-toolbar-actions';
 import { ClipboardToolbar } from '@/modules/navigator/components/clipboard-toolbar';
 import { GlobalSearchView } from '@/modules/global-search';
 import type { DirEntry } from '@/types/dir-entry';
 import { useIsSmallScreen } from '@/composables/use-responsive-query';
+import { useFileDropOperation } from '@/composables/use-file-drop-operation';
 
 type FileBrowserInstance = InstanceType<typeof FileBrowser> & {
   rootElement?: HTMLElement | null;
@@ -51,7 +56,6 @@ type FileBrowserInstance = InstanceType<typeof FileBrowser> & {
   navigateLeft?: () => void;
   navigateRight?: () => void;
   openSelected?: () => void;
-  navigateBack?: () => void;
   goBack?: () => void | Promise<void>;
   goForward?: () => void | Promise<void>;
   navigateToParent?: () => void | Promise<void>;
@@ -72,6 +76,17 @@ const terminalsStore = useTerminalsStore();
 const dirSizesStore = useDirSizesStore();
 const navigatorSelectionStore = useNavigatorSelectionStore();
 const { t } = useI18n();
+const activeFileBrowserDragState = useActiveFileBrowserDragState();
+const {
+  conflictDialogState: internalDropConflictDialogState,
+  handleConflictResolution: handleInternalDropConflictResolution,
+  handleConflictCancel: handleInternalDropConflictCancel,
+  performDrop: performInternalDrop,
+} = useFileDropOperation();
+
+provideFileBrowserInternalDropHandler((items, destinationPath, operation) =>
+  performInternalDrop(items.map(item => item.path), destinationPath, operation),
+);
 
 const TEXT_COPY_PREVIEW_MAX_LENGTH = 400;
 
@@ -627,7 +642,7 @@ function hasBlockingRekaDismissableLayersForNavigatorShortcuts(): boolean {
 
 function callActivePaneMethod(method: keyof Pick<
   FileBrowserInstance,
-  'navigateUp' | 'navigateDown' | 'navigateLeft' | 'navigateRight' | 'openSelected' | 'navigateBack' | 'goBack' | 'goForward' | 'navigateToParent'
+  'navigateUp' | 'navigateDown' | 'navigateLeft' | 'navigateRight' | 'openSelected' | 'goBack' | 'goForward' | 'navigateToParent'
 >): boolean {
   if (hasBlockingDismissalLayersForNavigatorShortcuts()) return false;
 
@@ -641,21 +656,6 @@ function callActivePaneMethod(method: keyof Pick<
   }
 
   return false;
-}
-
-function handleNavigateBackShortcut(): boolean {
-  const pane = getActivePaneRef();
-
-  if (
-    pane?.isFilterOpen
-    && typeof pane.filterQuery === 'string'
-    && pane.filterQuery.length > 0
-  ) {
-    pane.filterQuery = pane.filterQuery.slice(0, -1);
-    return true;
-  }
-
-  return callActivePaneMethod('navigateBack');
 }
 
 function handleNavigateHistoryBackShortcut(): boolean {
@@ -699,7 +699,6 @@ function registerShortcutHandlers() {
   shortcutsStore.registerHandler('navigateLeft', () => callActivePaneMethod('navigateLeft'));
   shortcutsStore.registerHandler('navigateRight', () => callActivePaneMethod('navigateRight'));
   shortcutsStore.registerHandler('openSelected', () => callActivePaneMethod('openSelected'), { checkItemSelected: hasSelectedItems });
-  shortcutsStore.registerHandler('navigateBack', handleNavigateBackShortcut);
   shortcutsStore.registerHandler('navigateHistoryBack', handleNavigateHistoryBackShortcut);
   shortcutsStore.registerHandler('navigateHistoryForward', handleNavigateHistoryForwardShortcut);
   shortcutsStore.registerHandler('goUpDirectory', handleGoUpDirectoryShortcut);
@@ -830,6 +829,21 @@ onUnmounted(() => {
           :pane2-path="workspacesStore.currentTabGroup?.[1]?.path"
           @paste="handlePasteShortcut"
           @paste-to-pane="handlePasteToPane"
+        />
+        <FileBrowserDragOverlay
+          :is-active="activeFileBrowserDragState.isActive"
+          :item-count="activeFileBrowserDragState.items.length"
+          :operation-type="activeFileBrowserDragState.operationType"
+          :cursor-x="activeFileBrowserDragState.cursorX"
+          :cursor-y="activeFileBrowserDragState.cursorY"
+        />
+        <FileBrowserConflictDialog
+          v-model:open="internalDropConflictDialogState.isOpen"
+          :conflicts="internalDropConflictDialogState.conflicts"
+          :operation-type="internalDropConflictDialogState.operationType"
+          :is-checking-conflicts="internalDropConflictDialogState.isCheckingConflicts"
+          @resolve="handleInternalDropConflictResolution"
+          @cancel="handleInternalDropConflictCancel"
         />
       </div>
       <InfoPanel

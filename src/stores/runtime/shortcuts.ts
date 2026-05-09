@@ -478,19 +478,6 @@ const DEFAULT_SHORTCUTS: ShortcutDefinition[] = [
     isReadOnly: false,
   },
   {
-    id: 'navigateBack',
-    labelKey: 'shortcuts.navigateBack',
-    defaultKeys: {
-      key: 'Backspace',
-    },
-    scope: 'navigator',
-    conditions: {
-      inputFieldIsActive: false,
-      dialogIsOpened: false,
-    },
-    isReadOnly: false,
-  },
-  {
     id: 'navigateHistoryBack',
     labelKey: 'shortcuts.navigateHistoryBack',
     defaultKeys: {
@@ -853,6 +840,10 @@ export function formatCaptureChordLabel(
 }
 
 export function formatShortcutKeys(keys: ShortcutKeys): string {
+  if (!keys.key) {
+    return '';
+  }
+
   const parts: string[] = [];
 
   if (keys.ctrl) parts.push('Ctrl');
@@ -914,6 +905,7 @@ function modifiersMatch(event: KeyboardEvent | MouseEvent, keys: ShortcutKeys): 
 }
 
 function matchesShortcut(event: KeyboardEvent, keys: ShortcutKeys): boolean {
+  if (!keys.key) return false;
   if (keys.key.startsWith('MouseButton')) return false;
 
   const eventCtrl = event.ctrlKey || event.metaKey;
@@ -960,6 +952,7 @@ function matchesShortcut(event: KeyboardEvent, keys: ShortcutKeys): boolean {
 }
 
 function matchesMouseShortcut(event: MouseEvent, keys: ShortcutKeys): boolean {
+  if (!keys.key) return false;
   if (!modifiersMatch(event, keys)) return false;
 
   const eventKey = mouseButtonToShortcutKey(event.button);

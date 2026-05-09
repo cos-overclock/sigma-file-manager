@@ -535,6 +535,11 @@
         "closeWindow": "Chiudi finestra",
         "navigateToHomePage": "Vai alla pagina iniziale"
       },
+      "tabAppearance": {
+        "title": "Aspetto delle schede",
+        "description": "Personalizza la visualizzazione delle schede del navigatore.",
+        "boldActiveTabTitle": "Testo della scheda attiva in grassetto"
+      },
       "tabs": "Schede",
       "tabBehavior": "Comportamento della scheda",
       "immutable": "Immutabile",
@@ -683,6 +688,7 @@
     "gpuSystemMemory": "gpu, sistema, memoria, ram, prestazioni",
     "workspaces": "spazi di lavoro",
     "tabs": "schede, layout",
+    "tabAppearance": "schede, scheda attiva, grassetto, testo",
     "navigatorHistory": "navigatore, navigazione, cronologia",
     "mouseButtons": "mouse, tasti, input, azioni",
     "globalSearch": "globale, ricerca, trova, visualizza, filtra, scansiona",
@@ -808,7 +814,6 @@
     "navigateLeft": "Navigare a sinistra",
     "navigateRight": "Navigare a destra",
     "openSelectedEntry": "Aprire la cartella o il file selezionato",
-    "navigateBack": "Tornare indietro nella cronologia",
     "navigateHistoryBack": "Indietro nella cronologia",
     "navigateHistoryForward": "Avanti nella cronologia",
     "switchToLeftPane": "Passare al pannello sinistro",

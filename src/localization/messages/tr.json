@@ -535,6 +535,11 @@
         "closeWindow": "Pencereyi kapat",
         "navigateToHomePage": "Ana sayfaya git"
       },
+      "tabAppearance": {
+        "title": "Sekme görünümü",
+        "description": "Gezgin sekmelerinin nasıl görüntüleneceğini özelleştirin.",
+        "boldActiveTabTitle": "Etkin sekme metnini kalın yap"
+      },
       "tabs": "Sekmeler",
       "tabBehavior": "Sekme davranışı",
       "immutable": "Değişmez",
@@ -683,6 +688,7 @@
     "gpuSystemMemory": "gpu, sistem, bellek, ram, performans",
     "workspaces": "çalışma alanları",
     "tabs": "sekmeler, düzen",
+    "tabAppearance": "sekmeler, etkin sekme, kalın, metin",
     "navigatorHistory": "gezgin, navigasyon, geçmiş",
     "mouseButtons": "fare, düğmeler, giriş, eylemler",
     "globalSearch": "global, ara, bul, bak, filtrele, tara",
@@ -808,7 +814,6 @@
     "navigateLeft": "Sola git",
     "navigateRight": "Sağa git",
     "openSelectedEntry": "Seçilen dizini veya dosyayı aç",
-    "navigateBack": "Geçmişte geri git",
     "navigateHistoryBack": "Geçmişte geri git",
     "navigateHistoryForward": "Geçmişte ileri git",
     "switchToLeftPane": "Sol panele geç",

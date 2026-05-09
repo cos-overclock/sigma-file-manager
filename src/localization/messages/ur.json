@@ -554,6 +554,11 @@
         "closeWindow": "ونڈو بند کریں",
         "navigateToHomePage": "ہوم صفحے پر جائیں"
       },
+      "tabAppearance": {
+        "title": "ٹیب کی ظاہری شکل",
+        "description": "نیویگیٹر ٹیبز کے دکھنے کا طریقہ حسب ضرورت بنائیں۔",
+        "boldActiveTabTitle": "فعال ٹیب کا متن بولڈ کریں"
+      },
       "tabs": "ٹیبز",
       "tabBehavior": "ٹیب رویہ",
       "immutable": "ناقابل تبدیلی",
@@ -702,6 +707,7 @@
     "gpuSystemMemory": "gpu, ram, میموری",
     "workspaces": "ورک اسپیس",
     "tabs": "ٹیب, لے آؤٹ",
+    "tabAppearance": "ٹیب, فعال ٹیب, بولڈ, متن",
     "navigatorHistory": "نیویگیٹر, سابقات",
     "mouseButtons": "ماؤس, بٹن",
     "globalSearch": "عالمی تلاش, تلاش, اسکین",
@@ -827,7 +833,6 @@
     "navigateLeft": "بائیں نیویگیٹ کریں",
     "navigateRight": "دائیں نیویگیٹ کریں",
     "openSelectedEntry": "منتخب فولڈر یا فائل کھولیں",
-    "navigateBack": "سابقات میں پیچھے جائیں",
     "navigateHistoryBack": "سابقات میں پیچھے جائیں",
     "navigateHistoryForward": "سابقات میں آگے جائیں",
     "switchToLeftPane": "بائیں پین پر جائیں",

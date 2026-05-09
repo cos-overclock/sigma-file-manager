@@ -121,7 +121,6 @@ export type ShortcutId
     | 'navigateLeft'
     | 'navigateRight'
     | 'openSelected'
-    | 'navigateBack'
     | 'navigateHistoryBack'
     | 'navigateHistoryForward'
     | 'goUpDirectory'
@@ -245,6 +244,7 @@ export type LastTabCloseBehavior = 'createDefaultTab' | 'closeWindow' | 'navigat
 
 export type UserSettingsNavigator = {
   lastTabCloseBehavior: LastTabCloseBehavior;
+  boldActiveTabTitle: boolean;
   layout: NavigatorLayout;
   infoPanel: UserSettingsNavigatorInfoPanel;
   showHiddenFiles: boolean;

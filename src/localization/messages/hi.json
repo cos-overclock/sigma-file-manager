@@ -554,6 +554,11 @@
         "closeWindow": "विंडो बंद",
         "navigateToHomePage": "होम पेज पर नेविगेट करें"
       },
+      "tabAppearance": {
+        "title": "टैब का रूप",
+        "description": "नेविगेटर टैब कैसे दिखते हैं, इसे अनुकूलित करें।",
+        "boldActiveTabTitle": "सक्रिय टैब का टेक्स्ट बोल्ड करें"
+      },
       "tabs": "टैब",
       "tabBehavior": "टैब व्यवहार",
       "immutable": "अडिग",
@@ -702,6 +707,7 @@
     "gpuSystemMemory": "जीपीयू, सिस्टम, मेमोरी, रैम, प्रदर्शन",
     "workspaces": "कार्यस्थानों",
     "tabs": "टैब, लेआउट",
+    "tabAppearance": "टैब, सक्रिय टैब, बोल्ड, टेक्स्ट",
     "navigatorHistory": "नाविक, नेविगेशन, इतिहास",
     "mouseButtons": "माउस, बटन, इनपुट, क्रियाएँ",
     "globalSearch": "वैश्विक, खोजें, ढूंढें, देखें, फ़िल्टर करें, स्कैन करें",
@@ -827,7 +833,6 @@
     "navigateLeft": "बाईं ओर नेविगेट करें",
     "navigateRight": "दाईं ओर नेविगेट करें",
     "openSelectedEntry": "चयनित निर्देशिका या फ़ाइल खोलें",
-    "navigateBack": "इतिहास में वापस जाएँ",
     "navigateHistoryBack": "इतिहास में पीछे जाएँ",
     "navigateHistoryForward": "इतिहास में आगे जाएँ",
     "switchToLeftPane": "बाएँ फलक पर स्विच करें",

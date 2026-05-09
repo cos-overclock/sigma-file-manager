@@ -535,6 +535,11 @@
         "closeWindow": "Fenster schließen",
         "navigateToHomePage": "Zur Startseite navigieren"
       },
+      "tabAppearance": {
+        "title": "Tab-Darstellung",
+        "description": "Passen Sie an, wie Navigator-Tabs angezeigt werden.",
+        "boldActiveTabTitle": "Aktiven Tab-Text fett darstellen"
+      },
       "tabs": "Tabs",
       "tabBehavior": "Tab-Verhalten",
       "immutable": "Unveränderlich",
@@ -683,6 +688,7 @@
     "gpuSystemMemory": "GPU, System, Arbeitsspeicher, RAM, Leistung",
     "workspaces": "Arbeitsplätze",
     "tabs": "Tabs, Layout",
+    "tabAppearance": "Tabs, aktiver Tab, fett, Text",
     "navigatorHistory": "navigator, navigation, geschichte",
     "mouseButtons": "Maus, Tasten, Eingaben, Aktionen",
     "globalSearch": "global, suchen, finden, suchen, filtern, scannen",
@@ -808,7 +814,6 @@
     "navigateLeft": "Nach links navigieren",
     "navigateRight": "Nach rechts navigieren",
     "openSelectedEntry": "Ausgewählten Ordner oder die ausgewählte Datei öffnen",
-    "navigateBack": "Im Verlauf zurück navigieren",
     "navigateHistoryBack": "Im Verlauf zurück",
     "navigateHistoryForward": "Im Verlauf vorwärts",
     "switchToLeftPane": "Zum linken Bereich wechseln",

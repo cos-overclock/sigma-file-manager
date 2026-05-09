@@ -535,6 +535,11 @@
         "closeWindow": "ウィンドウを閉じる",
         "navigateToHomePage": "ホームページに移動"
       },
+      "tabAppearance": {
+        "title": "タブの外観",
+        "description": "ナビゲーターのタブの表示方法をカスタマイズします。",
+        "boldActiveTabTitle": "アクティブなタブのテキストを太字にする"
+      },
       "tabs": "タブ",
       "tabBehavior": "タブの動作",
       "immutable": "不変",
@@ -683,6 +688,7 @@
     "gpuSystemMemory": "GPU、システム、メモリ、RAM、パフォーマンス",
     "workspaces": "ワークスペース",
     "tabs": "タブ、レイアウト",
+    "tabAppearance": "タブ、アクティブなタブ、太字、テキスト",
     "navigatorHistory": "ナビゲーター、ナビゲーション、履歴",
     "mouseButtons": "マウス、ボタン、入力、アクション",
     "globalSearch": "グローバル、検索、検索、検索、フィルター、スキャン",
@@ -808,7 +814,6 @@
     "navigateLeft": "左に移動",
     "navigateRight": "右に移動",
     "openSelectedEntry": "選択したディレクトリまたはファイルを開く",
-    "navigateBack": "履歴で戻る",
     "navigateHistoryBack": "履歴を戻る",
     "navigateHistoryForward": "履歴を進む",
     "switchToLeftPane": "左ペインに切り替え",
