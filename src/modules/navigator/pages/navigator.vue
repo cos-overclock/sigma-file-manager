@@ -27,6 +27,7 @@ import { useTerminalsStore } from '@/stores/runtime/terminals';
 import { useDirSizesStore } from '@/stores/runtime/dir-sizes';
 import { useNavigatorSelectionStore } from '@/stores/runtime/navigator-selection';
 import { FileBrowser } from '@/modules/navigator/components/file-browser';
+import type { AddressBarEditorMode } from '@/modules/navigator/components/file-browser/address-bar-editor-utils';
 import FileBrowserConflictDialog from '@/modules/navigator/components/file-browser/file-browser-conflict-dialog.vue';
 import FileBrowserDragOverlay from '@/modules/navigator/components/file-browser/file-browser-drag-overlay.vue';
 import { useActiveFileBrowserDragState } from '@/modules/navigator/components/file-browser/composables/use-file-browser-drag';
@@ -38,6 +39,7 @@ import { GlobalSearchView } from '@/modules/global-search';
 import type { DirEntry } from '@/types/dir-entry';
 import { useIsSmallScreen } from '@/composables/use-responsive-query';
 import { useFileDropOperation } from '@/composables/use-file-drop-operation';
+import { arePathsEquivalent, getParentPath } from '@/utils/file-operation-paths';
 
 type FileBrowserInstance = InstanceType<typeof FileBrowser> & {
   rootElement?: HTMLElement | null;
@@ -45,6 +47,8 @@ type FileBrowserInstance = InstanceType<typeof FileBrowser> & {
   isFilterOpen?: boolean;
   currentPath?: string;
   focusFilter?: () => void;
+  openAddressBarEditor?: (mode: AddressBarEditorMode) => void;
+  openCopiedPath?: () => Promise<boolean>;
   navigateToPath?: (path: string) => Promise<void>;
   openFile?: (path: string) => Promise<void>;
   refresh?: () => void | Promise<void>;
@@ -84,9 +88,27 @@ const {
   performDrop: performInternalDrop,
 } = useFileDropOperation();
 
-provideFileBrowserInternalDropHandler((items, destinationPath, operation) =>
-  performInternalDrop(items.map(item => item.path), destinationPath, operation),
-);
+provideFileBrowserInternalDropHandler(async (items, destinationPath, operation) => {
+  const didCompleteSuccessfully = await performInternalDrop(
+    items.map(item => item.path),
+    destinationPath,
+    operation,
+  );
+
+  if (!didCompleteSuccessfully) {
+    return;
+  }
+
+  const pathsToRefresh = new Set<string>([destinationPath]);
+
+  if (operation === 'move') {
+    for (const item of items) {
+      pathsToRefresh.add(getParentPath(item.path));
+    }
+  }
+
+  await refreshFileBrowsersAtPaths([...pathsToRefresh]);
+});
 
 const TEXT_COPY_PREVIEW_MAX_LENGTH = 400;
 
@@ -259,6 +281,44 @@ function setPaneRef(element: FileBrowserInstance | null, tabId: string) {
   }
 }
 
+async function refreshFileBrowsersAtPaths(directoryPaths: string[]) {
+  if (directoryPaths.length === 0) {
+    return;
+  }
+
+  const seenPanes = new Set<FileBrowserInstance>();
+  const refreshTasks: Promise<unknown>[] = [];
+
+  function scheduleRefresh(pane: FileBrowserInstance | null | undefined) {
+    if (!pane?.refresh || !pane.currentPath) {
+      return;
+    }
+
+    const matchesPath = directoryPaths.some(directoryPath =>
+      arePathsEquivalent(pane.currentPath!, directoryPath),
+    );
+
+    if (!matchesPath || seenPanes.has(pane)) {
+      return;
+    }
+
+    seenPanes.add(pane);
+    refreshTasks.push(
+      Promise.resolve(pane.refresh()).catch((error: unknown) => {
+        console.error('File browser refresh failed:', error);
+      }),
+    );
+  }
+
+  for (const pane of paneRefsMap.value.values()) {
+    scheduleRefresh(pane);
+  }
+
+  scheduleRefresh(singlePaneRef.value);
+
+  await Promise.all(refreshTasks);
+}
+
 function getFocusedSplitPaneRef(): FileBrowserInstance | undefined {
   const activeElement = document.activeElement;
 
@@ -379,6 +439,17 @@ function handleFilterShortcut() {
   if (pane) {
     pane.focusFilter?.();
   }
+}
+
+function openAddressBarEditor(mode: AddressBarEditorMode): boolean {
+  const pane = getNavigatorPaneRef();
+
+  if (!pane?.openAddressBarEditor) {
+    return false;
+  }
+
+  pane.openAddressBarEditor(mode);
+  return true;
 }
 
 async function handleReloadShortcut() {
@@ -642,7 +713,7 @@ function hasBlockingRekaDismissableLayersForNavigatorShortcuts(): boolean {
 
 function callActivePaneMethod(method: keyof Pick<
   FileBrowserInstance,
-  'navigateUp' | 'navigateDown' | 'navigateLeft' | 'navigateRight' | 'openSelected' | 'goBack' | 'goForward' | 'navigateToParent'
+  'navigateUp' | 'navigateDown' | 'navigateLeft' | 'navigateRight' | 'openSelected' | 'goBack' | 'goForward' | 'navigateToParent' | 'openCopiedPath'
 >): boolean {
   if (hasBlockingDismissalLayersForNavigatorShortcuts()) return false;
 
@@ -671,9 +742,12 @@ function handleGoUpDirectoryShortcut(): boolean {
 }
 
 function registerShortcutHandlers() {
+  shortcutsStore.registerHandler('toggleAddressBar', () => openAddressBarEditor('path'));
+  shortcutsStore.registerHandler('openEntry', () => openAddressBarEditor('entry'));
   shortcutsStore.registerHandler('toggleFilter', handleFilterShortcut);
   shortcutsStore.registerHandler('reloadCurrentDirectory', handleReloadShortcut);
   shortcutsStore.registerHandler('copyCurrentDirectoryPath', handleCopyCurrentDirectoryPathShortcut);
+  shortcutsStore.registerHandler('openCopiedPath', () => callActivePaneMethod('openCopiedPath'));
   shortcutsStore.registerHandler('copy', handleCopyShortcut);
   shortcutsStore.registerHandler('cut', handleCutShortcut);
   shortcutsStore.registerHandler('paste', handlePasteShortcut);

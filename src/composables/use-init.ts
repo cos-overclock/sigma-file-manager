@@ -40,6 +40,7 @@ import { applyUiZoomStep } from '@/utils/ui-zoom';
 import { toggleMainWindowFullscreen } from '@/utils/window-fullscreen';
 import { removeAppSplash } from '@/utils/app-splash';
 import { logInitTrace, traceInitStep } from '@/utils/init-trace';
+import { warmPathComparisonVolumeCache } from '@/utils/path-comparison-volume-cache';
 
 const APP_LAUNCH_ARGS_EVENT = 'app-launch-args';
 const STARTUP_BACKGROUND_REFRESH_TIMEOUT_MS = 1500;
@@ -135,6 +136,12 @@ export function useInit() {
     return launchContext.hadDelegatedShellPaths && launchContext.args.length <= 1;
   }
 
+  function isCurrentNavigationReload(): boolean {
+    const [navigationEntry] = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+
+    return navigationEntry?.type === 'reload';
+  }
+
   async function revealMainWindow(
     launchContextOverride?: LaunchContext,
     openedLaunchTargets = false,
@@ -162,7 +169,10 @@ export function useInit() {
       }
       else {
         await traceInitStep('revealMainWindow:show', () => currentWindow.show());
-        await traceInitStep('revealMainWindow:setFocus', () => currentWindow.setFocus());
+
+        if (!isCurrentNavigationReload()) {
+          await traceInitStep('revealMainWindow:setFocus', () => currentWindow.setFocus());
+        }
       }
     }
 
@@ -256,6 +266,7 @@ export function useInit() {
     logInitTrace(`init started (mainWindow=${isMainWindow})`);
 
     await traceInitStep('platformStore.init', () => platformStore.init());
+    await traceInitStep('pathComparisonVolumeCache.warm', () => warmPathComparisonVolumeCache());
     await traceInitStep('userPathsStore.init', () => userPathsStore.init());
     await traceInitStep('userSettingsStore.init', () => userSettingsStore.init());
 
@@ -317,7 +328,7 @@ export function useInit() {
       await traceInitStep('globalShortcutsStore.init', () => globalShortcutsStore.init());
     }
 
-    disableWebViewFeatures();
+    disableWebViewFeatures(isMainWindow);
 
     runInBackgroundWithTrace('background:restoreStartupTabs', async () => {
       if (!loadedInitialTabGroup) {

@@ -4,7 +4,6 @@ Copyright © 2021 - present Aleksey Hoffman. All rights reserved.
 -->
 
 <script setup lang="ts">
-import FileBrowserCurrentDirMenu from './file-browser-current-dir-menu.vue';
 import FileBrowserToolbarAddressBar from './file-browser-toolbar-address-bar.vue';
 import FileBrowserToolbarNavButtons from './file-browser-toolbar-nav-buttons.vue';
 import FileBrowserToolbarCreateButton from './file-browser-toolbar-create-button.vue';
@@ -35,6 +34,8 @@ const emit = defineEmits<{
   (event: 'refresh'): void;
   (event: 'submitPath'): void;
   (event: 'navigateTo', path: string): void;
+  (event: 'openFile', path: string): void;
+  (event: 'openAddressEditor'): void;
   (event: 'createNewDirectory'): void;
   (event: 'createNewFile'): void;
   (event: 'filterInputFocused'): void;
@@ -68,6 +69,8 @@ function handleAddressBarNavigate(path: string) {
         class="file-browser-toolbar__address-bar"
         :current-path="pathInput"
         @navigate="handleAddressBarNavigate"
+        @open-file="emit('openFile', $event)"
+        @edit="emit('openAddressEditor')"
       />
 
       <div class="file-browser-toolbar__actions">
@@ -83,7 +86,6 @@ function handleAddressBarNavigate(path: string) {
           @update:is-filter-open="emit('update:isFilterOpen', $event)"
           @filter-input-focused="emit('filterInputFocused')"
         />
-        <FileBrowserCurrentDirMenu />
       </div>
     </div>
   </div>
